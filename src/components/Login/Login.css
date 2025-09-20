@@ -1,0 +1,48 @@
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    height: 100px;
+}
+
+.logo {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+}
+
+.logintext {
+    color: white;
+}
+
+.login-form {
+    margin: 0 auto;           
+    max-width: 50vw;          /* 40% of viewport width */
+    width: 50vw;              /* 40% of viewport width */
+    padding: 40px 24px;       
+    box-sizing: border-box;   
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;       */
+    justify-content: center;  
+    min-height: 60vh;
+}
+
+.login-form-text {
+    color: rgb(255, 255, 255);
+}
+
+.login-form-text > label {
+  color: rgb(255, 255, 255);
+}
+
+/* Make input text black */
+.login-form input {
+  color: black;
+}
+
+/* Make 'Remember me' text white if it uses a label inside login-form */
+.login-form label {
+  color: rgb(255, 255, 255);
+}
