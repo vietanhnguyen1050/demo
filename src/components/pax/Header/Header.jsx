@@ -61,7 +61,7 @@ function Header() {
                 </Flex>
             </Flex>
         );
-    } else if (localStorage.getItem("isLoggedIn") === "false") {
+    } else if (localStorage.getItem("isLoggedIn") === "false" || localStorage.getItem("isLoggedIn") === null) {
         return (
             <Flex justify="space-evenly" align="center" className="header">
                 <Link className="headlogo headlink" to={"/"}>
@@ -86,7 +86,7 @@ function Header() {
                 </Flex>
             </Flex>
         );
-    } else {
+    } else if (localStorage.getItem("isLoggedIn") === "true") {
         return (
             <Flex justify="space-evenly" align="center" className="header">
                 <Link className="headlogo headlink" to={"/"}>
