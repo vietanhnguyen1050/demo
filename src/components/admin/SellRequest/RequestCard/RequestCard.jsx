@@ -49,7 +49,7 @@ function RequestCard({ email, carname, price, sold, plate, isPending, contact })
             body: JSON.stringify({ ...admin, summary: updatedSummary })
         });
 
-        await handleUpdate({ sold: true, isPending: false, price: pricePercentage, confirmonsale: true });
+        await handleUpdate({ sold: true, isPending: false, price: price, confirmonsale: true });
         // Upload to car API
         const user = await adminFetchSpecificUser(email);
         if (!user) return;
