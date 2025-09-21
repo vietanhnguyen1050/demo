@@ -57,7 +57,7 @@ function RequestCard({ email, carname, price, sold, plate, isPending, contact })
             item => item.carname === carname && item.plate === plate
         );
         if (idx === -1) return;
-        const dataupload = { ...user.sellhistory[idx], sold: true, isPending: false };
+        const dataupload = { ...user.sellhistory[idx], sold: true, isPending: false, price: pricePercentage, confirmonsale: true };
         const carApi = `https://mindx-mockup-server.vercel.app/api/resources/cardata?apiKey=689f647d95f60a227657fefc`;
         await fetch(carApi, {
             method: "POST",
