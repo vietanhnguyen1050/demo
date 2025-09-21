@@ -101,7 +101,7 @@ function Request({ name, description, image, status, response, email, phonenumbe
                     {phonenumber}
                 </span>
             </Col>
-            <Col span={11}>
+            <Col span={8}>
                 <span
                     style={{
                         fontWeight: 600,
