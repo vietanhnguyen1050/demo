@@ -69,7 +69,7 @@ function Request({ name, description, image, status, response, email, phonenumbe
                 gap: 32,
             }}
         >
-            <Col span={6}>
+            <Col span={3}>
                 <img
                     src={image}
                     alt={name}
@@ -101,7 +101,7 @@ function Request({ name, description, image, status, response, email, phonenumbe
                     {phonenumber}
                 </span>
             </Col>
-            <Col span={8}>
+            <Col span={11}>
                 <span
                     style={{
                         fontWeight: 600,
