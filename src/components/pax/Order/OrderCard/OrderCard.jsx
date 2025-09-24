@@ -4,7 +4,7 @@ function showprice(price) {
     return price?.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
 }
 
-function OrderCard({ carname, price, contact, status, discountPercent, onCheckout }) {
+function OrderCard({ carname, price, contact, status, discountPercent, onCheckout, onRemove }) {
     return (
         <Card
             style={{
@@ -81,6 +81,9 @@ function OrderCard({ carname, price, contact, status, discountPercent, onCheckou
                         </span>
                     )}
                 </span>
+                <Button type="primary" danger onClick={onRemove} style={{ marginLeft: 16 }}>
+                    Remove
+                </Button>
                 <Button type="primary" onClick={onCheckout} style={{ marginLeft: 16 }}>
                     Check Out
                 </Button>

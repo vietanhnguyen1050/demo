@@ -27,6 +27,16 @@ function Order() {
     const handleCheckout = (car) => {
         navigate(`/checkout/${car._id}`);
     };
+    const handleremove = async (carId) => {
+        const api = `https://mindx-mockup-server.vercel.app/api/resources/cardata/${carId}?apiKey=689f647d95f60a227657fefc`;
+        await fetch(api, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ incart: "", confirmonsale: true })
+        });
+        alert("Removed from cart!");
+        navigate("/");
+    };
 
     return (
         <div className="history-container">
@@ -46,6 +56,7 @@ function Order() {
                                 status={car.status}
                                 discountPercent={discountPercent}
                                 onCheckout={() => handleCheckout(car)}
+                                onRemove={() => handleremove(car._id)}
                             />
                         );
                     })}
