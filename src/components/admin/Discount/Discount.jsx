@@ -3,7 +3,6 @@ import { InputNumber, Slider, Button } from "antd";
 import { adminFetchSpecificUser, fetchSpecificUser } from "../../FetchData";
 
 export async function fetchDiscountsFromAPI() {
-    // Fetch discounts from admin account on API
     const admin = await adminFetchSpecificUser("adminecg@gmail.com");
     return admin && admin.discounts ? admin.discounts : {
         New: 0,
@@ -14,30 +13,8 @@ export async function fetchDiscountsFromAPI() {
     };
 }
 
-export function useDiscounts() {
-    const [discounts, setDiscounts] = useState({
-        New: 0,
-        "Daily Commute": 0,
-        "Law Enforcement": 0,
-        Display: 0,
-        Motorsport: 0,
-    });
-
-    useEffect(() => {
-        fetchDiscountsFromAPI().then(setDiscounts);
-    }, []);
-
-    return [discounts, setDiscounts];
-}
-
 function Discount() {
-    const [discounts, setDiscounts] = useState({
-        New: 0,
-        "Daily Commute": 0,
-        "Law Enforcement": 0,
-        Display: 0,
-        Motorsport: 0,
-    });
+    const [discounts, setDiscounts] = useState(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -87,6 +64,11 @@ function Discount() {
         marginBottom: 24,
         width: "100%",
     };
+
+    // Show loading or nothing until discounts are loaded
+    if (!discounts) {
+        return <div style={{ color: "#fff", textAlign: "center" }}>Loading discounts...</div>;
+    }
 
     return (
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>

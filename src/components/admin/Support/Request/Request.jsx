@@ -9,7 +9,6 @@ function Request({ name, description, image, status, response, email, phonenumbe
     const handleSubmitResponse = async () => {
         setLoading(true);
         try {
-            // Fetch user by email
             const users = await fetchAllUsers();
             const user = users.find(u => u.email === email);
             if (!user) {
@@ -17,7 +16,6 @@ function Request({ name, description, image, status, response, email, phonenumbe
                 setLoading(false);
                 return;
             }
-            // Find the supporthistory item
             const idx = (user.supporthistory || []).findIndex(
                 item => item.name === name && item.description === description && item.image === image && item.status === false
             );
@@ -26,14 +24,12 @@ function Request({ name, description, image, status, response, email, phonenumbe
                 setLoading(false);
                 return;
             }
-            // Update the supporthistory item
             const updatedSupporthistory = [...user.supporthistory];
             updatedSupporthistory[idx] = {
                 ...updatedSupporthistory[idx],
                 status: true,
                 response: responseText
             };
-            // PUT to API
             const api = `https://mindx-mockup-server.vercel.app/api/resources/users/${user._id}?apiKey=689f647d95f60a227657fefc`;
             await fetch(api, {
                 method: "PUT",

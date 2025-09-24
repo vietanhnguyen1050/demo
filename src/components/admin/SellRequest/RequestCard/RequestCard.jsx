@@ -14,15 +14,12 @@ function RequestCard({ email, carname, price, sold, plate, isPending, contact })
         setPricePercentage(price / (100 - value) * 100);
     }
     const handleUpdate = async (updateObj) => {
-        // Fetch the user by email
         const user = await adminFetchSpecificUser(email);
         if (!user) return;
-        // Find the sellhistory item index
         const idx = (user.sellhistory || []).findIndex(
             item => item.carname === carname && item.plate === plate
         );
         if (idx === -1) return;
-        // Update the sellhistory item
         const updatedSellhistory = [...user.sellhistory];
         updatedSellhistory[idx] = { ...updatedSellhistory[idx], ...updateObj };
         // PUT to API
@@ -36,7 +33,7 @@ function RequestCard({ email, carname, price, sold, plate, isPending, contact })
     };
 
     const handleApprove = async () => {
-        const admin = await fetchSpecificUser();
+        const admin = await adminFetchSpecificUser("adminecg@gmail.com");
         const addSummary = {
             income: false,
             name: `Bought ${carname}, ${plate} from ${email}`,
@@ -50,7 +47,6 @@ function RequestCard({ email, carname, price, sold, plate, isPending, contact })
         });
 
         await handleUpdate({ sold: true, isPending: false, price: price, confirmonsale: true });
-        // Upload to car API
         const user = await adminFetchSpecificUser(email);
         if (!user) return;
         const idx = (user.sellhistory || []).findIndex(

@@ -9,7 +9,6 @@ function SellRequest() {
     const fetchSellRequests = async () => {
         try {
             const users = await fetchAllUsers();
-            // Map each user to their email and unsold sellhistory items
             const requests = users.flatMap(user =>
                 (user.sellhistory || [])
                     .filter(item => item.sold === false && item.isPending === true)

@@ -8,7 +8,6 @@ function BuyOrder() {
     const fetchBuyRequests = async () => {
         try {
             const users = await fetchAllUsers();
-            // Map each user to their email and buyhistory items that are not fully delivered/done
             const requests = users.flatMap(user =>
                 (user.buyhistory || [])
                     .filter(item => !(item.delivered === true && item.done === true))

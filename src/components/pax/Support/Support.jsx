@@ -11,7 +11,6 @@ function Support() {
 
     useEffect(() => {
         fetchAllUsers().then(users => {
-            // Flatten all supporthistory from all users, add email for reference
             const allRequests = users.flatMap(user =>
                 (user.supporthistory || []).map(req => ({
                     ...req,

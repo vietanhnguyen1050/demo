@@ -25,7 +25,6 @@ function Order() {
     }, [userAccount]);
 
     const handleCheckout = (car) => {
-        // Navigate to /checkout/:id
         navigate(`/checkout/${car._id}`);
     };
 

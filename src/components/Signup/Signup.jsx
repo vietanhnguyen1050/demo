@@ -18,7 +18,6 @@ function Signup() {
   const onFinish = async (values) => {
     setLoading(true);
 
-    // Check for existing email
     const users = await fetchAllUsers();
     if (users.some(user => user.email === values.email)) {
       alert("This email is already used.");
@@ -26,7 +25,6 @@ function Signup() {
       return;
     }
 
-    // Prepare data in the required format
     const data = {
       email: values.email,
       password: values.password,
@@ -58,7 +56,7 @@ function Signup() {
       });
       const result = await response.json();
       alert('User registered successfully');
-      navigate("/login"); // Redirect to home page
+      navigate("/login");
     } catch (error) {
       console.error('Error registering user:', error);
     } finally {
@@ -162,7 +160,6 @@ function Signup() {
                 : Promise.reject(new Error("Should accept agreement")),
           },
         ]}
-        // {...tailFormItemLayout}
       >
         <Checkbox>
           I have read the <a href="plz agree :)))))" target="_blank" rel="noopener noreferrer">agreement</a>

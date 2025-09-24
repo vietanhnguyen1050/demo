@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link, Outlet } from "react-router";
 import { Flex, Button } from "antd";
-import { useAuth } from "../../AuthContext.jsx"; // Import useAuth
+import { useAuth } from "../../AuthContext.jsx";
 
 function Header() {
     const { loginStatus, setLoginStatus, setAdmin } = useAuth();

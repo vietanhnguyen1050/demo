@@ -11,7 +11,6 @@ function Account() {
     const handleChangePassword = async (values) => {
         setLoading(true);
         try {
-            // Get current user's email from localStorage
             const currentEmail = localStorage.getItem("account");
             if (!currentEmail) {
                 alert("Local storage tampered.");
@@ -19,7 +18,6 @@ function Account() {
                 return;
             }
 
-            // Fetch all users and find the current user
             const users = await fetchAllUsers();
             const user = users.find(u => u.email === currentEmail);
 
@@ -29,14 +27,12 @@ function Account() {
                 return;
             }
 
-            // Compare old password
             if (user.password !== values.oldPassword) {
                 alert("Old password is incorrect.");
                 setLoading(false);
                 return;
             }
 
-            // Update password via PUT
             const api = `https://mindx-mockup-server.vercel.app/api/resources/users/${user._id}?apiKey=689f647d95f60a227657fefc`;
             const response = await fetch(api, {
                 method: "PUT",
